@@ -1,0 +1,9 @@
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80" # Map host port 80 to container port 80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf # Mount custom Nginx config
+      - ./ui/public:/usr/share/nginx/public # Mount static content
+    restart: always
