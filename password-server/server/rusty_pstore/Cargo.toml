@@ -1,0 +1,24 @@
+[package]
+name = "rusty-pstore"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "rusty_pstore"
+crate-type = ["cdylib"] # Required for dynamic library compilation
+
+[dependencies]
+aes-gcm = "0.10.3"
+base64 = "0.22.1"
+colored = "3.0.0"
+generic-array = "1.3.4"
+hmac = "0.12.1"
+pbkdf2 = "0.12.2"
+pyo3 = "0.27.1"
+rand = "0.9.2"
+rayon = "1.11.0"
+scanpw = "1.0.0"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+sha2 = "0.10.9"
+struct_iterable = "0.1.1"
