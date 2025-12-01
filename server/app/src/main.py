@@ -1,8 +1,8 @@
+import uvicorn
 from auth import get_token_info, create_token, login
 from rsuty_pstore_service import encode_base64, get_names, add_pass, get_pass_info
-
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-import uvicorn
 
 from routers.auth_router import authRouter
 from routers.pass_store_router import pass_store_router
@@ -54,6 +54,15 @@ def other_main():
 app = FastAPI()
 
 def main():
+    origins = ["*"]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     app.include_router(authRouter)
     app.include_router(pass_store_router)
 

@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
+import { useAuth } from '../auth/authProvider';
 
 
 export const Banner = () => {
 
     const [count, setCount] = useState(0);
+    const auth = useAuth();
 
-    const onClick = () => {
-        console.log(`incrementing count to ${count + 1}`);
-        setCount(count + 1);
+    btoa
+
+    const onClick = async () => {
+        await auth.login({
+            grant_type: 'client_credentials',
+            scope: '',
+            client_id: btoa('admin'),
+            client_secret: btoa('password')
+        });
+
+        console.log(auth.isAuthed());
     }
 
     return (

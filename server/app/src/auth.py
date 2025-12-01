@@ -68,6 +68,12 @@ class OAuth2ClientCredentialsRequestForm:
 
 oauth2_scheme = Oauth2ClientCredentials(tokenUrl="auth/token")
 
+def describe_token(token: Annotated[str, Depends(oauth2_scheme)]):
+    try:
+        return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    except Exception:
+        raise UNAUTHORIZED_EXCEPTION
+
 def get_token_info(token: Annotated[str, Depends(oauth2_scheme)]):
     try:
         data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
