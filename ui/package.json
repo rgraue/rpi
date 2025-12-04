@@ -6,6 +6,7 @@
   "scripts": {
     "start": "esbuild src/index.tsx --bundle --outfile=public/build/bundle.js --platform=browser --watch --servedir=public/",
     "build": "esbuild src/index.tsx --bundle --outfile=public/build/bundle.js --platform=browser",
+    "build:active": "",
     "lint": "eslint src/** --quiet",
     "format": "eslint src/** --fix"
   },
